@@ -4,8 +4,8 @@ author: Cian Buckley
 
 navbar-links:
   About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
+  Subscribe:
+    - Email : "subscribe"
 
 avatar: "/assets/img/elf.jpg"
 round-avatar: true
