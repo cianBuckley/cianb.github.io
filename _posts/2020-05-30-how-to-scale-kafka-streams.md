@@ -128,13 +128,15 @@ Materialized.`as`<Key, Value>(Stores.inMemoryKeyValueStore("topic-name"))
         .withValueSerde(ReconciliationSerde())
 ```
 
+
 ### Avoid network operations
 
 This may be obvious to a lot of you, but it's worth mentioning that I/O will by far be your biggest bottleneck. Typically, I/O is required for some external lookups. You may or may not be able to avoid these lookups, but thankfully, KStreams does provide you a way of doing this lookup without leaving the consumer group instance. 
 
 To avail of this, you will need be capable of pre-emptively reading whatever lookup source you require and push it onto a Kafka topic keyed by the same partitioning key and the same partition count as your applications source topic. You can then create an in-memory [KTable](https://kafka.apache.org/20/javadoc/org/apache/kafka/streams/kstream/KTable.html) from the topic. 
 
-### Avoid complex operations if possible
+## Conclusion
 
-On high throughput applications, complex operations are a bit of a no go since your bottle neck will be CPU bound. This holds double for KStream topics. This is because of the
+Kafka streams is a very powerful library which I heartily recommend. However, as we can see there are a few things to keep in mind before blindly deploying this in production.
 
+If you have any questions or comments or feel that I've arrived to a questionable or even entirely incorrect conclusion at any point in the article, please leave some below and I'll be sure to reply! 
