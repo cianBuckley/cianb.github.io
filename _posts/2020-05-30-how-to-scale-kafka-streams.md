@@ -120,6 +120,7 @@ There is no real elegant solution to this, but we could do one or all of these t
 * Upgrade your KStreams library to at least `2.4.0`
 * increase the `message.byte.size` limit of your `__offsets` topic. This has some consequences though that will affect the entire Kafka broker, so I would not make this decision lightly. 
 * Reduce character count of internal topic names by explicitly naming internal topics. You can do this in the topology definition
+* Evaluate splitting your service in two. 
 
 Here is an example of how we can explicitly set a topic name of an materialised internal topic. 
 ```kotlin
