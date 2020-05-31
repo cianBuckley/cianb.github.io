@@ -66,7 +66,6 @@ You can copy that into this really useful [topology visualisation tool](https://
 
 ![Topology](/assets/img/posts/how-to-scale-kafka-streams-effectively/stream-example.png)
 
-
 ### Topology Execution and Parallelism
 
 Let's go over how the topology is executed in your server.
@@ -83,16 +82,17 @@ current active tasks: [0_0, 0_2, 1_2, 2_2]
 current standby tasks: []
 previous active tasks: []
 ```
+
 In this example we have 1 thread. The current active tasks array has 4 tasks in it, which are all executed on the same thread. The first number indicates the sub-topology number (we have two in our example) and the partition of each topic (again, there are 2 in this example)
 
 
-TODO * A kstream thread does not exactly boil down to one java thread, but a few of them. **
+TODO * A kstream thread does not exactly boil down to one java thread, but a few of them. *
 
-### Partitioning
+### Effective Partitioning 
 
-Choosing a good key to partition by is absolutely crucial in being able to operate at scale. This is of course not unique to streams, but it is so fundamental to streaming that we need to cover it now before going further. It is absolutely crucial to get partitioning right or you risk drastically reducing the overall throughput your application can handle.
+Choosing a good key to partition by is absolutely crucial in being able to operate at scale. This is of course not unique to streams, but it is so fundamental to streaming that we need to cover it now before going further. It is crucial to get partitioning right, or we risk reducing the overall throughput the application can handle.
 
-Partitioning in kafka is a simple (hash of key) modulo (partition count) operation.
+Partitioning in kafka is a simple. It's a (hash of key) modulo (partition count) operation i.e `hash(key)%num_partition`. The trick is finding a key that distributes well across all partitions. For example, if your partitioning key is, say, an account number, you could have one account which accounts for 80% of your traffic. that means that 80% of your traffic goes through one partition. You cannot have multiple instances consuming from the same partition so this could create a bottleneck. 
 
 ### Task Allocation
 
@@ -100,9 +100,9 @@ The [StreamsPartitionAssignor](https://github.com/apache/kafka/blob/trunk/stream
 
 Imagine you have a poorly distributed partition load. This is very possible if you partition by a poor key.
 
-### Repartitioning
-
 ### Knowing Kstreams Limits
 
+### Avoid complex operations if possible
 
+### Instrumentation
 
