@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to Effectively Scale a Kafka Streams Application
-subtitle: A 
+subtitle: 
 tags: ["kstreams", "kafka"]
 keywords: kstreams, kafka 
 comments: true
