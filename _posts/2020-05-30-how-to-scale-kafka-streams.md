@@ -108,13 +108,13 @@ How do we get around this? Unfortunately, right now the only option we have is t
 ### Avoid long naming of internal topics
 
 When a consumer group comes up, it first elects a group leader. This leader is responsible for running the aforementioned [StreamsPartitionAssignor](https://github.com/apache/kafka/blob/trunk/streams/src/main/java/org/apache/kafka/streams/processor/internals/StreamsPartitionAssignor.java). 
-Part of it's job is to gather the name of each partition of each source and internal topic that is required in the streams topology. It will then produce a record containing all of this information and send it to the `__offsets` topic where all other group members will consume from.
+Part of it's job is to gather the name of each partition of each source and internal topic that is required in the streams topology. It will then produce a record containing all partition allocation information for each kstream thread and send it to the `__offsets` topic where all other group members will consume from.
 
 The problem here lies in the fact that if you have enough partitions, your message size could easily out-grow the `max.message.bytes` of the `__offsets` topic. This will result in a `RecordTooLarge` exception being thrown and will trigger a rebalance of your consumer group. After rebalance, the same message will be produced and the group will once again enter a state of rebalancing creating a cyclic rebalance cycle. 
 
 Once again, this is an issue which was brought to and [addressed by Apache](https://issues.apache.org/jira/browse/KAFKA-7149) in Kafka streams version `2.4.0`. Great!
 
-But hold on, that fix just mitigates the problem, it does not remove it entirely. The threshold has greatly been increased, but there is still an upper threshold that your consumer group can hit. So what else can we do?
+But hold on, that fix just mitigates the problem, it does not remove it entirely. The threshold has greatly been increased, but there is still an upper threshold that your consumer group can hit (And I have still accidentally hit it in production!). So what else can we do?
 
 There is no real elegant solution to this, but we could do one or all of these things:
 * Upgrade your KStreams library to at least `2.4.0`
