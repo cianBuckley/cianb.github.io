@@ -114,8 +114,8 @@ staticman_url: https://cianb-staticman-dev.herokuapp.com/v2/entry/cianBuckley/ci
 
 reCaptcha:
   enabled: true
-  siteKey: 6LcH7v4UAAAAAFeZStSl-db9-M02wIdezwegtdFs
-  secret: 6LcH7v4UAAAAAPI73Z3VfvkaXQjcleiiuXU27_9V
+  siteKey: 6LceFv8UAAAAAOkrZfdNYkvuLIpFZZZZJnugGY4H
+  secret: 6LceFv8UAAAAAFRE89POnoaiRQT1d-2Ro5xeEWWK
 
 # --- You don't need to touch anything below here (but you can if you want) --- #
 
