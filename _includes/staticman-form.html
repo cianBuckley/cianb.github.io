@@ -1,0 +1,69 @@
+
+<!-- Start new comment form -->
+<div class="page__comments-form">
+  <h3 class="page__comments-title">{{ site.data.ui-text[site.locale].comments_label | default: "Leave a Comment" }}</h3>
+  <p class="small">{{ site.data.ui-text[site.locale].comment_form_info | default: "Your email address will not be published. Required fields are marked" }} <span class="required">*</span></p>
+  <form id="new_comment" class="page__comments-form js-form form" method="post" action="{{
+  site.staticman_url }}">
+    <div class="form-group">
+      <label for="comment-form-message">{{ site.data.ui-text[site.locale].comment_form_comment_label | default: "Comment" }} <small class="required">*</small></label><br>
+      <textarea type="text" rows="2" cols="36" id="comment-form-message" name="fields[message]" tabindex="1"></textarea>
+      <div class="small form-text"><a href="https://www.markdownguide.org/cheat-sheet/" target="_blank">{{ site.data.ui-text[site.locale].comment_form_md_info | default: "Markdown is supported." }}</a></div>
+    </div>
+
+    <div class="form-group">
+      <label for="comment-form-name">{{ site.data.ui-text[site.locale].comment_form_name_label | default: "Name" }} <small class="required">*</small></label>
+      <input type="text" id="comment-form-name" name="fields[name]" tabindex="2" />
+    </div>
+
+    <div class="form-group">
+      <label for="comment-form-email">{{ site.data.ui-text[site.locale].comment_form_email_label |
+        default: "Email address" }} <small class="required">*</small></label>
+      <input type="email" id="comment-form-email" name="fields[email]" tabindex="3" />
+    </div>
+
+    <div class="form-group hidden" style="display: none;">
+      <input type="hidden" name="options[origin]" value="{{ absolute_url }}">
+      <input type="hidden" name="options[slug]" value="{{ page.slug }}">
+      <label for="comment-form-location">Not used. Leave blank if you are a human.</label>
+      <input type="text" id="comment-form-location" name="fields[hidden]" autocomplete="off"/>
+      {% if site.staticman.reCaptcha.siteKey %}<input type="hidden" name="options[reCaptcha][siteKey]" value="{{ site.staticman.reCaptcha.siteKey }}">{% endif %}
+      {% if site.staticman.reCaptcha.secret %}<input type="hidden" name="options[reCaptcha][secret]" value="{{ site.staticman.reCaptcha.secret }}">{% endif %}
+    </div>
+
+    {% if site.staticman.reCaptcha.siteKey %}
+    <div class="form-group">
+      <div class="g-recaptcha" data-sitekey="{{ site.staticman.reCaptcha.siteKey }}"></div>
+    </div>
+    {% endif %}
+
+
+    <div class="form-group">
+      <button type="submit" id="comment-form-submit" tabindex="5" class="btn btn--primary btn--large">{{ site.data.ui-text[site.locale].comment_btn_submit | default: "Submit Comment" }}</button>
+      <button type="submit" id="comment-form-submitted" tabindex="5" class="btn btn--primary btn--large hidden" disabled>{{ site.data.ui-text[site.locale].comment_btn_submitted | default: "Submitted" }}</button>
+    </div>
+  </form>
+</div>
+
+
+
+<article class="modal mdl-card mdl-shadow--2dp">
+  <div>
+    <h3 class="modal-title js-modal-title"></h3>
+  </div>
+  <div class="mdl-card__supporting-text js-modal-text"></div>
+  <div class="mdl-card__actions mdl-card--border">
+    <button class="button mdl-button--colored mdl-js-button mdl-js-ripple-effect js-close-modal">Close</button>
+  </div>
+</article>
+
+<!-- End new comment form -->
+<!-- Load reCaptcha if site key is set -->
+{% if site.staticman.reCaptcha.siteKey %}
+<script async src="https://www.google.com/recaptcha/api.js"></script>
+{% endif %}
+</div>
+
+  <!-- Load script to handle comment form submission -->
+  <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+  <script src="{{ "/assets/js/staticman.js" | relative_url }}"></script>

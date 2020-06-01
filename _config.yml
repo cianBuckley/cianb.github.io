@@ -1,4 +1,4 @@
-title: Blog
+title: Cian Buckley
 description: A blog about kafka, elasticsearch and other technologies
 author: Cian Buckley
 
@@ -100,22 +100,6 @@ footer-link-col: "#404040"
 #  theme: github-light # Utterances theme
 #  label: blog-comments # Label that will be assigned to GitHub Issues created by Utterances
 
-# To use Staticman comments, first invite `staticmanlab` as a collaborator to your repository and
-# accept the invitation by going to `https://staticman3.herokuapp.com/v3/connect/github/<username>/<repo-name>`.
-# Then uncomment the following section and fill in "repository", "branch", and "endpoint".
-# If you want to use reCaptcha for staticman (optional for spam protection), then fill
-# in the "siteKey" and "secret" parameters below and also in `staticman.yml`.
-# See more details at https://staticman.net/
-#staticman:
-#  repository : # GitHub username/repository eg. "daattali/beautiful-jekyll"
-#  branch     : master # If you're not using `master` branch, then you also need to update the `branch` parameter in `staticman.yml`
-#  endpoint   : # URL of your own deployment, with a trailing slash (will fallback to a public GitLab instance) eg. https://<your-api>/v3/entry/github/
-#  reCaptcha:
-#    siteKey  : # Use your own site key, you need to apply for one on Google
-#    secret   : # ENCRYPT your password by going to https://staticman3.herokuapp.com/v3/encrypt/<your-site-secret>
-
-# --- Misc --- #
-
 # Character used to separate site title and description in HTML document title
 # and RSS feed title
 title-separator: "-"
@@ -125,6 +109,13 @@ date_format: "%-d %B %Y"
 
 # Facebook App ID
 #fb_app_id: ""
+
+staticman_url: https://cianb-staticman-dev.herokuapp.com/v2/entry/cianBuckley/cianb.github.io/master/comments
+
+reCaptcha:
+  enabled: true
+  siteKey: 6LcH7v4UAAAAAFeZStSl-db9-M02wIdezwegtdFs
+  secret: 6LcH7v4UAAAAAPI73Z3VfvkaXQjcleiiuXU27_9V
 
 # --- You don't need to touch anything below here (but you can if you want) --- #
 
@@ -148,7 +139,7 @@ defaults:
       layout: "post"
       comments: true  # add comments to all blog posts
       social-share: true # add social media sharing buttons to all blog posts
-      readtime: false # add estimated reading time on all blog posts
+      readtime: true # add estimated reading time on all blog posts
   -
     scope:
       path: "" # all files
