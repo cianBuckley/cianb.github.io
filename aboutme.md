@@ -12,7 +12,8 @@ On the elastic side, we have had some fun special cases trying to cater for crea
 
 If you have interest in collaborating with me on either of the two technologies, don't hesitate to contact! 
 
-Thanks for reading, 
+Thanks for reading!
+
 Cian 
 
 
