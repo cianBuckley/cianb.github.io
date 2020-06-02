@@ -12,7 +12,7 @@ comments: true
 
 Great news, KStreams applications are very easy to scale out of the box! That is of course until things turn sour and you're left scurrying to figure out why one partition is continuously lagging. When that happens you'll be thankful for understanding what is happening behind the scenes of streaming API. I'll try my best to distil this information here. 
 
-The first step in understanding KStreams, is understanding Kafka itself. I'm going to assume you already have basic Kafka knowledge. If not, I'd recommend you first read [Kafka In A Nutshell](https://sookocheff.com/post/kafka/kafka-in-a-nutshell)
+The first step in understanding KStreams, is understanding Kafka itself. I'm going to assume you already have basic Kafka knowledge. If not, I'd recommend you first read [Kafka 101](https://dev.to/hcapucho/apache-kafka-101-introduction-567a)
 
 Let's start by defining what a topology is.
 
