@@ -110,7 +110,7 @@ date_format: "%-d %B %Y"
 # Facebook App ID
 #fb_app_id: ""
 
-staticman_url: https://cianb-staticman-dev.herokuapp.com/v2/entry/cianBuckley/cianb.github.io/master/comments
+staticman_url: https://cianb-staticman.herokuapp.com/v2/entry/cianBuckley/cianb.github.io/master/comments
 
 reCaptcha:
   enabled: true
