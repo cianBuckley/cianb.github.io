@@ -94,7 +94,26 @@ var BeautifulJekyllJS = {
   }
 };
 
-// 2fc73a3a967e97599c9763d05e564189
-
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
 
+(function ($) {
+$('#submit_comment').submit(function(e){
+  e.preventDefault(); 
+	var post_url = $(this).attr("action"); //get form action url
+	var request_method = $(this).attr("method"); //get form GET/POST method
+	var form_data = $(this).serialize(); //Encode form elements for submission
+
+	$.ajax({
+		url : post_url,
+		type: request_method,
+		data : form_data
+	}).done(function(response){
+    console.log(response);
+		$("#server-results").append("Comment Submitted! Please wait for approval before the comment appears");
+    $("#comment-form-message").val("");
+    $("#comment-form-name").val("");
+    $("#comment-form-email").val("");
+	});
+});
+
+})(jQuery);

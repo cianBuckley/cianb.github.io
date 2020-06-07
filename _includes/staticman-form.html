@@ -3,8 +3,7 @@
 <div class="page__comments-form">
   <h3 class="page__comments-title">{{ site.data.ui-text[site.locale].comments_label | default: "Leave a Comment" }}</h3>
   <p class="small">{{ site.data.ui-text[site.locale].comment_form_info | default: "Your email address will not be published. Required fields are marked" }} <span class="required">*</span></p>
-  <form id="new_comment" class="page__comments-form js-form form" method="post" action="{{
-  site.staticman_url }}">
+  <form id="submit_comment" class="page__comments-form js-form form" method="post" action="{{ site.staticman_url }}" >
     <div class="form-group">
       <label for="comment-form-message">{{ site.data.ui-text[site.locale].comment_form_comment_label | default: "Comment" }} <small class="required">*</small></label><br>
       <textarea type="text" rows="2" cols="36" id="comment-form-message" name="fields[message]" tabindex="1"></textarea>
@@ -17,8 +16,7 @@
     </div>
 
     <div class="form-group">
-      <label for="comment-form-email">{{ site.data.ui-text[site.locale].comment_form_email_label |
-        default: "Email address" }} <small class="required">*</small></label>
+      <label for="comment-form-email">Email address (Optional)</label>
       <input type="email" id="comment-form-email" name="fields[email]" tabindex="3" />
     </div>
 
@@ -37,14 +35,14 @@
     </div>
     {% endif %}
 
-
+    <div id="server-results"></div>
     <div class="form-group">
-      <button type="submit" id="comment-form-submit" tabindex="5" class="btn btn--primary btn--large">{{ site.data.ui-text[site.locale].comment_btn_submit | default: "Submit Comment" }}</button>
+      <input type="submit" name="submit" value="Submit" class="btn btn-primary btn--large" />
     </div>
   </form>
 </div>
 
-
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <article class="modal mdl-card mdl-shadow--2dp">
   <div>
