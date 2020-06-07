@@ -1,0 +1,6 @@
+_id: ecb7ed80-a90c-11ea-ac6e-4505a20b09e0
+message: "I really liked the focus on advanced users and corner cases of running it in production. \r\n\r\nIf you have some time in the near future, could you share a little bit more on which aspects should we look for to ensure an application is running smoothly? I am quite biased here, but I know you have a lot of knowledge to share about specific metrics to monitor/alert (partition sizes, consumer lag, rebalances, etc). \r\n\r\nI see a general lack on the community about advanced materials and hands-on blog posts covering Kafka Streams in general, thanks for sharing!"
+name: Otávio Carvalho
+email: ''
+hidden: ''
+date: 1591568356
